@@ -12,6 +12,21 @@ struct ListNode {
 };
 class Data {
 public:
-  vector<int> vi{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  vector<int> vi{1, 2, 3, 4, 5, 6, 7, 8, 9};
   int target = 6;
+  ListNode *buildListNode(const vector<int> &v) {
+    ListNode *root = new ListNode();
+    ListNode *n = root;
+    for (auto i : v) {
+      n = buildListNode(n, i);
+    }
+    return root->next;
+  }
+
+private:
+  ListNode *buildListNode(ListNode *node, int value) {
+    ListNode *n = new ListNode(value);
+    node->next = n;
+    return n;
+  }
 };

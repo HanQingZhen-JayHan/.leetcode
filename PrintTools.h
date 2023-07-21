@@ -32,4 +32,5 @@ void printNode(ListNode *node) {
     cout << node->val << (node->next != nullptr ? "->" : "");
     node = node->next;
   }
+  cout << endl;
 }

@@ -67,12 +67,41 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+// recursive
 #include "BaseSolution.h"
+#include "Data.h"
+#include "PrintTools.h"
 class Solution : public BaseSolution {
 public:
-  void test() {}
+  void test() {
+    ListNode *l1 = data.buildListNode({2, 4, 3});
+    ListNode *l2 = data.buildListNode({5, 6, 4});
+    printNode(addTwoNumbers(l1, l2));
+  }
 
 public:
-  ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {}
+  ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
+    return addTwoNumbers(l1, l2, 0);
+  }
+  ListNode *addTwoNumbers(ListNode *l1, ListNode *l2, int carry) {
+    if (l1 == nullptr && l2 == nullptr && carry == 0) {
+      return nullptr;
+    }
+    int val = 0;
+    if (l1 != nullptr) {
+      val += l1->val;
+      l1 = l1->next;
+    }
+    if (l2 != nullptr) {
+      val += l2->val;
+      l2 = l2->next;
+    }
+    ListNode *node = new ListNode();
+    node->val = (val + carry) % 10;
+    int c = (val + carry) / 10;
+    node->next = addTwoNumbers(l1, l2, c);
+    node->next = addTwoNumbers(l1, l2, c);
+    return node;
+  }
 };
 // @lc code=end

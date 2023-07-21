@@ -14,6 +14,7 @@ class Data {
 public:
   vector<int> vi{1, 2, 3, 4, 5, 6, 7, 8, 9};
   int target = 6;
+  string palindromic ="cbbd";// "aacabdkacaa"; //"cbbd";//
   ListNode *buildListNode(const vector<int> &v) {
     ListNode *root = new ListNode();
     ListNode *n = root;

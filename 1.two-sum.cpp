@@ -5,10 +5,17 @@
  */
 
 // @lc code=start
+#include "BaseSolution.h"
 #include <unordered_map>
 #include <vector>
 using namespace std;
-class Solution {
+class Solution : public BaseSolution {
+public:
+  void test() {
+    printInput(data.vi);
+    printInput(data.target);
+    printOutput(twoSum(data.vi, data.target));
+  }
 
 public:
   vector<int> twoSum(vector<int> &nums, int target) {

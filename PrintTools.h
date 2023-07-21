@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Data.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -25,3 +26,10 @@ void printInput(const int d) { cout << "Input: " << d << endl; }
 void printOutput(const int d) { cout << "Output: " << d << endl; }
 
 void print(const string &str) { cout << str << endl; }
+
+void printNode(ListNode *node) {
+  while (node != nullptr) {
+    cout << node->val << (node->next != nullptr ? "->" : "");
+    node = node->next;
+  }
+}

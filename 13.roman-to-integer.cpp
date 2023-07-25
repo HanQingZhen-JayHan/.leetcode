@@ -87,7 +87,7 @@
 class Solution : public BaseSolution {
 public:
   void test() {
-    string s = "IV";
+    string s = "MXMIV";
     printInput(s);
     printOutput(romanToInt(s));
   }

@@ -21,11 +21,17 @@ void printInput(const vector<int> &v) {
   cout << "Input: ";
   print(v);
 }
+void printOutput(const vector<vector<int>> &vv) {
+  cout << "Output: ";
+  for (auto v : vv) {
+    print(v);
+  }
+}
 
 void printInput(const int d) { cout << "Input: " << d << endl; }
 void printOutput(const int d) { cout << "Output: " << d << endl; }
-void printInput(const string& str) { cout << "Input: " << str << endl; }
-void printOutput(const string& str) { cout << "Output: " << str << endl; }
+void printInput(const string &str) { cout << "Input: " << str << endl; }
+void printOutput(const string &str) { cout << "Output: " << str << endl; }
 
 void print(const string &str) { cout << str << endl; }
 

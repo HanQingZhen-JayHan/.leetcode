@@ -9,7 +9,7 @@
 #include <unordered_map>
 #include <vector>
 using namespace std;
-class Solution : public BaseSolution {
+class Solution1 : public BaseSolution {
 public:
   void test() {
     printInput(data.vi);

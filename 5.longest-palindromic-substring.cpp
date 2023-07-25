@@ -45,7 +45,7 @@
 #include "BaseSolution.h"
 #include "PrintTools.h"
 #include <algorithm>
-class Solution : public BaseSolution {
+class Solution5 : public BaseSolution {
 public:
   void test() {
     printInput(data.palindromic);

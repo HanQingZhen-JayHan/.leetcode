@@ -3,7 +3,7 @@
 #include <map>
 #include <unordered_map>
 #include <vector>
-class Solution : public BaseSolution {
+class Solution12 : public BaseSolution {
 public:
   void test() {
     int i = 1994;

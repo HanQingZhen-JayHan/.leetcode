@@ -6,9 +6,10 @@
 // #include "13.roman-to-integer.cpp"
 // #include "12.integer-to-roman.cpp"
 #include "15.3-sum.cpp"
+#include "79.word-search.cpp"
 int main(int, char **) {
 
   print("Hello, from LeetCode!");
-  Solution s;
+  Solution79 s;
   s.test();
 }

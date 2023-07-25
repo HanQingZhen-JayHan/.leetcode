@@ -71,7 +71,7 @@
 #include "BaseSolution.h"
 #include "Data.h"
 #include "PrintTools.h"
-class Solution : public BaseSolution {
+class Solution2 : public BaseSolution {
 public:
   void test() {
     ListNode *l1 = data.buildListNode({2, 4, 3});

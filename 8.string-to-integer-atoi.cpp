@@ -114,7 +114,7 @@
 #include <algorithm>
 #include <cstdint>
 #include <string>
-class Solution : public BaseSolution {
+class Solution8 : public BaseSolution {
 public:
   void test() {
     string str = "-2147483649";

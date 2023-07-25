@@ -46,7 +46,7 @@
 #include <algorithm>
 #include <unordered_set>
 #include <vector>
-class Solution : public BaseSolution {
+class Solution15 : public BaseSolution {
 public:
   void test() {
     vector<int> d = {-1, 0, 1, 2, -1, -4};
@@ -63,12 +63,12 @@ public:
     vector<vector<int>> res;
     set<tuple<int, int, int>> s;
 
-    for (int i = 0; i < nums.size(); ++i) {//o(n)
+    for (int i = 0; i < nums.size(); ++i) { // o(n)
       int lower = i + 1, upper = nums.size() - 1;
-      while (lower < upper) {//o(logn)
+      while (lower < upper) { // o(logn)
         int sum = nums[lower] + nums[upper];
         if (sum + nums[i] == 0) {
-          auto r = s.insert({nums[i], nums[lower], nums[upper]}); //o(logn)
+          auto r = s.insert({nums[i], nums[lower], nums[upper]}); // o(logn)
           if (r.second) {
             res.push_back(vector<int>{nums[i], nums[lower], nums[upper]});
           }

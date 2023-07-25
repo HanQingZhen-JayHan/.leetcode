@@ -84,7 +84,7 @@
 #include "BaseSolution.h"
 #include "PrintTools.h"
 #include <unordered_map>
-class Solution : public BaseSolution {
+class Solution13 : public BaseSolution {
 public:
   void test() {
     string s = "MXMIV";

@@ -47,39 +47,38 @@
 #include <algorithm>
 class Solution5 : public BaseSolution {
 public:
-  void test() {
-    printInput(data.palindromic);
-    printOutput(longestPalindrome(data.palindromic));
-  }
+    void test() {
+        printInput(data.palindromic);
+        printOutput(longestPalindrome(data.palindromic));
+    }
 
 public:
-  int maxLen(int lower, int upper, const string &str) {
-    for (; lower >= 0 && upper < str.size();) {
-      if (str.at(lower) == str.at(upper)) {
-        --lower;
-        ++upper;
-      }else{
-        break;
-      }
+    int maxLen(int lower, int upper, const string& str) {
+        for(; lower >= 0 && upper < str.size();) {
+            if(str.at(lower) == str.at(upper)) {
+                --lower;
+                ++upper;
+            } else {
+                break;
+            }
+        }
+        return upper - lower - 1;
     }
-    return upper - lower -1;
-  }
-  string longestPalindrome(string s) {
-    int size = s.size();
-    int index=0;
-    int len = 0;
-    for (int i = 0; i < size; ++i) {
+    string longestPalindrome(string s) {
+        int size = s.size();
+        int index = 0;
+        int len = 0;
+        for(int i = 0; i < size; ++i) {
 
-      int bb = maxLen(i-1, i, s);
-      int aba = maxLen(i - 1, i + 1, s);
-      if(bb>len || aba>len){
-        len = max(bb,aba);
-        index = i - (len / 2);
-      }
+            int bb = maxLen(i - 1, i, s);
+            int aba = maxLen(i - 1, i + 1, s);
+            if(bb > len || aba > len) {
+                len = max(bb, aba);
+                index = i - (len / 2);
+            }
+        }
+        // print(s.substr(lowerIndex, upperIndex));
+        return s.substr(index, len);
     }
-    // print(s.substr(lowerIndex, upperIndex));
-    return s.substr(index, len);
-  }
-
 };
 // @lc code=end

@@ -116,48 +116,48 @@
 #include <string>
 class Solution8 : public BaseSolution {
 public:
-  void test() {
-    string str = "-2147483649";
-    printInput(str);
-    printOutput(myAtoi(str));
-  }
+    void test() {
+        string str = "-2147483649";
+        printInput(str);
+        printOutput(myAtoi(str));
+    }
 
 public:
-  int myAtoi(string s) {
-    int sign = 1;
-    int index = -1;
-    // find the begin point
-    for (int i = 0; i < s.size(); ++i) {
-      if (s[i] >= '0' && s[i] <= '9') {
-        index = i;
-        break;
-      } else if (s[i] == '+' || s[i] == '-') {
-        sign = s[i] == '+' ? 1 : -1;
-        index = i + 1;
-        break;
-      } else if (s[i] != ' ') {
-        break;
-      }
-    }
-    if (index < 0) {
-      return 0;
-    }
+    int myAtoi(string s) {
+        int sign = 1;
+        int index = -1;
+        // find the begin point
+        for(int i = 0; i < s.size(); ++i) {
+            if(s[i] >= '0' && s[i] <= '9') {
+                index = i;
+                break;
+            } else if(s[i] == '+' || s[i] == '-') {
+                sign = s[i] == '+' ? 1 : -1;
+                index = i + 1;
+                break;
+            } else if(s[i] != ' ') {
+                break;
+            }
+        }
+        if(index < 0) {
+            return 0;
+        }
 
-    // find the end point
-    int start = index;
-    long res = 0;
-    while (index < s.size() && s[index] >= '0' && s[index] <= '9') {
-      res = res * 10 + (s[index] - '0');
-      ++index;
-      // clamp
-      if (sign > 0 && res >= INT32_MAX) {
-        return INT32_MAX;
-      } else if (sign < 0 && res > INT32_MAX) {
-        return INT32_MIN;
-      }
-    };
+        // find the end point
+        int start = index;
+        long res = 0;
+        while(index < s.size() && s[index] >= '0' && s[index] <= '9') {
+            res = res * 10 + (s[index] - '0');
+            ++index;
+            // clamp
+            if(sign > 0 && res >= INT32_MAX) {
+                return INT32_MAX;
+            } else if(sign < 0 && res > INT32_MAX) {
+                return INT32_MIN;
+            }
+        };
 
-    return res * sign;
-  }
+        return res * sign;
+    }
 };
 // @lc code=end

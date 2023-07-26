@@ -86,31 +86,30 @@
 #include <unordered_map>
 class Solution13 : public BaseSolution {
 public:
-  void test() {
-    string s = "MXMIV";
-    printInput(s);
-    printOutput(romanToInt(s));
-  }
+    void test() {
+        string s = "MXMIV";
+        printInput(s);
+        printOutput(romanToInt(s));
+    }
 
 public:
-  int romanToInt(string s) {
-    if (s.empty()) {
-      return 0;
+    int romanToInt(string s) {
+        if(s.empty()) {
+            return 0;
+        }
+        static unordered_map<char, int> romanMap = { { 'I', 1 }, { 'V', 5 },
+            { 'X', 10 }, { 'L', 50 }, { 'C', 100 }, { 'D', 500 }, { 'M', 1000 } };
+        int res = 0, prev = 0;
+        for(char c : s) {
+            int cur = romanMap[c];
+            if(prev == 0 || cur <= prev) {
+                res += cur;
+            } else {
+                res += (-2) * prev + cur;
+            }
+            prev = cur;
+        }
+        return res;
     }
-    static unordered_map<char, int> romanMap = {
-        {'I', 1},   {'V', 5},   {'X', 10},  {'L', 50},
-        {'C', 100}, {'D', 500}, {'M', 1000}};
-    int res = 0, prev = 0;
-    for (char c : s) {
-      int cur = romanMap[c];
-      if (prev == 0 || cur <= prev) {
-        res += cur;
-      } else {
-        res += (-2) * prev + cur;
-      }
-      prev = cur;
-    }
-    return res;
-  }
 };
 // @lc code=end

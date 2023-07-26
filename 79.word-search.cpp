@@ -69,56 +69,54 @@
 #include <vector>
 class Solution79 : public BaseSolution {
 public:
-  void test() {
-    vector<vector<char>> d{
-        {'A', 'B', 'C', 'E'}, {'S', 'F', 'E', 'S'}, {'A', 'D', 'E', 'E'}};
-    string word = "ABCESEEEFS";
-    bool r = exist(d, word);
-    cout << "result: " << r << endl;
-  }
+    void test() {
+        vector<vector<char>> d{ { 'A', 'B', 'C', 'E' }, { 'S', 'F', 'E', 'S' },
+            { 'A', 'D', 'E', 'E' } };
+        string word = "ABCESEEEFS";
+        bool r = exist(d, word);
+        cout << "result: " << r << endl;
+    }
 
 public:
-  bool exist(vector<vector<char>> &board, string word) {
-    int r = board.size();
-    int c = board[0].size();
-    //O(mn(3mn-m-n))
-    for (int i = 0; i < r; ++i) {
-      for (int j = 0; j < c; ++j) {
-        if (board[i][j] == word.at(0)) {
-          if (dfs(board, word, 0, i, j)) {
-            return true;
-          }
+    bool exist(vector<vector<char>>& board, string word) {
+        int r = board.size();
+        int c = board[0].size();
+        // O(mn(3mn-m-n))
+        for(int i = 0; i < r; ++i) {
+            for(int j = 0; j < c; ++j) {
+                if(board[i][j] == word.at(0)) {
+                    if(dfs(board, word, 0, i, j)) {
+                        return true;
+                    }
+                }
+            }
         }
-      }
+        return false;
     }
-    return false;
-  }
-  // A grid graph G_(m,n) has mn nodes and (m-1)n+(n-1)m=2mn-m-n edges
-  // Time complexity is O(V+E) = O(mn+2mn-m-n)=O(3mn-m-n)
-  bool dfs(vector<vector<char>> &board, const string word, int idx, int i,
-           int j) {
-    if (idx == word.size()) {
-      return true;
-    }
-    int r = board.size();
-    int c = board[0].size();
-    if (i < 0 || i >= r || j < 0 || j >= c) {
-      return false;
-    }
-    bool result = false;
+    // A grid graph G_(m,n) has mn nodes and (m-1)n+(n-1)m=2mn-m-n edges
+    // Time complexity is O(V+E) = O(mn+2mn-m-n)=O(3mn-m-n)
+    bool dfs(vector<vector<char>>& board, const string word, int idx, int i, int j) {
+        if(idx == word.size()) {
+            return true;
+        }
+        int r = board.size();
+        int c = board[0].size();
+        if(i < 0 || i >= r || j < 0 || j >= c) {
+            return false;
+        }
+        bool result = false;
 
-    if (board[i][j] == word.at(idx)) {
-      //mark
-      board[i][j] = '@';
-      result = dfs(board, word, idx + 1, i - 1, j) ||
-               dfs(board, word, idx + 1, i + 1, j) ||
-               dfs(board, word, idx + 1, i, j - 1) ||
-               dfs(board, word, idx + 1, i, j + 1);
-      //restore
-      board[i][j] = word.at(idx);
-    }
+        if(board[i][j] == word.at(idx)) {
+            // mark
+            board[i][j] = '@';
+            result = dfs(board, word, idx + 1, i - 1, j) ||
+            dfs(board, word, idx + 1, i + 1, j) ||
+            dfs(board, word, idx + 1, i, j - 1) || dfs(board, word, idx + 1, i, j + 1);
+            // restore
+            board[i][j] = word.at(idx);
+        }
 
-    return result;
-  }
+        return result;
+    }
 };
 // @lc code=end

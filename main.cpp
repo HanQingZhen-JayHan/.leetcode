@@ -8,9 +8,11 @@
 #include "126.word-ladder-ii.cpp"
 #include "15.3-sum.cpp"
 #include "79.word-search.cpp"
+#include "71.simplify-path.cpp"
+
 int main(int, char **) {
 
   print("Hello, from LeetCode!");
-  Solution126 s;
+  Solution71 s;
   s.test();
 }

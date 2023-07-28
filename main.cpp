@@ -10,9 +10,10 @@
 #include "79.word-search.cpp"
 #include "71.simplify-path.cpp"
 #include "139.word-break.cpp"
+#include "152.maximum-product-subarray.cpp"
 int main(int, char **) {
 
   print("Hello, from LeetCode!");
-  Solution139 s;
+  Solution152 s;
   s.test();
 }

@@ -11,9 +11,10 @@
 #include "71.simplify-path.cpp"
 #include "139.word-break.cpp"
 #include "152.maximum-product-subarray.cpp"
+#include "672.bulb-switcher-ii.cpp"
 int main(int, char **) {
 
   print("Hello, from LeetCode!");
-  Solution152 s;
+  Solution672 s;
   s.test();
 }

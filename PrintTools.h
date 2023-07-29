@@ -4,9 +4,19 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 using namespace std;
 void print(const string& str) { cout << str << endl; }
+void print(const unordered_set<string>& us) {
+    cout << "unordered_set:[" << endl;
+    int size = us.size();
+    for(auto s : us) {
+        print(s);
+    }
+
+    cout << "]" << endl;
+}
 void print(const vector<string>& v) {
     cout << "[";
     int size = v.size();

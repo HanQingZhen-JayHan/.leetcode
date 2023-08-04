@@ -13,10 +13,11 @@
 #include "672.bulb-switcher-ii.cpp"
 #include "71.simplify-path.cpp"
 #include "79.word-search.cpp"
+#include "838.push-dominoes.cpp"
 int main(int, char**) {
 
     print("Hello, from LeetCode!");
-    // Solution672 s;
-    Twitter s;
+    Solution838 s;
+    // Twitter s;
     s.test();
 }

@@ -130,7 +130,7 @@ public:
         if(currentTweet) {
             ts.push(currentTweet);
         }
-        // O(n): can be improved by sorting user based on latest tweet's timestamp 
+        // O(n*logn): can be improved by sorting user based on latest tweet's timestamp 
         // if read heavy, we need to sort user in following process.
         // if write heavy, we can keep it
         for(auto user : followees) {

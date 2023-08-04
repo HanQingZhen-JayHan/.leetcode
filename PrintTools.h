@@ -44,7 +44,7 @@ void printOutput(const vector<int>& v) {
     print(v);
 }
 void printInput(const vector<int>& v) {
-    cout << "Input: ";
+    cout << "Input : ";
     print(v);
 }
 void printOutput(const vector<vector<int>>& vv) {
@@ -60,9 +60,9 @@ void printOutput(const vector<vector<string>>& vv) {
     }
 }
 
-void printInput(const int d) { cout << "Input: " << d << endl; }
+void printInput(const int d) { cout << "Input : " << d << endl; }
 void printOutput(const int d) { cout << "Output: " << d << endl; }
-void printInput(const string& str) { cout << "Input: " << str << endl; }
+void printInput(const string& str) { cout << "Input : " << str << endl; }
 void printOutput(const string& str) { cout << "Output: " << str << endl; }
 
 void printNode(ListNode* node) {

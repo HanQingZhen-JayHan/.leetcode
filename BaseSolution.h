@@ -9,6 +9,7 @@
 #include <unordered_set>
 #include <algorithm>
 #include <iterator>
+#include <list>
 
 class BaseSolution {
 protected:

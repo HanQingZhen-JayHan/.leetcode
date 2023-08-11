@@ -2,6 +2,7 @@
 
 #include "Data.h"
 #include <iostream>
+#include <list>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
@@ -46,6 +47,10 @@ void printOutput(const vector<int>& v) {
 void printInput(const vector<int>& v) {
     cout << "Input : ";
     print(v);
+}
+void printOutput(const list<int>& l) {
+    vector<int> tmp(l.cbegin(), l.cend());
+    printOutput(tmp);
 }
 void printOutput(const vector<vector<int>>& vv) {
     cout << "Output: ";

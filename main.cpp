@@ -15,12 +15,16 @@
 #include "71.simplify-path.cpp"
 #include "79.word-search.cpp"
 #include "838.push-dominoes.cpp"
+#include "295.find-median-from-data-stream.cpp"
+#include "297.serialize-and-deserialize-binary-tree.cpp"
 
 int main(int, char**) {
 
     print("Hello, from LeetCode!");
     // Solution838 s;
     //  Twitter s;
-    LFUCache s(2);
-    s.test();
+    //LFUCache s(2);
+    //MedianFinder s;
+    Codec s;
+     s.test();
 }

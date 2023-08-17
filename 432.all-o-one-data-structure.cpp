@@ -86,40 +86,46 @@ public:
         string data2 = "data2";
         inc(data);
         inc(data);
-        // inc(data);
-        // inc(data);
-        // inc(data);
         inc(data1);
-        //inc(data1);
         inc(data2);
+        cout << "data: 2, data1: 1, data2: 1" << endl;
         printTest();
+
         inc(data2);
+        cout << "data: 2, data1: 1, data2: 2" << endl;
         printTest();
+
         inc(data1);
+        cout << "data: 2, data1: 2, data2: 2" << endl;
         printTest();
+
         inc(data2);
+        cout << "data: 2, data1: 2, data2: 3" << endl;
         printTest();
+
         dec(data1);
+        cout << "data: 2, data1: 1, data2: 3" << endl;
         printTest();
+
         dec(data1);
+        cout << "data: 2, data1: 0, data2: 3" << endl;
         printTest();
+
         dec(data);
+        cout << "data: 1, data1: 0, data2: 3" << endl;
         printTest();
+
         dec(data2);
+        cout << "data: 1, data1: 0, data2: 2" << endl;
         printTest();
     }
     void printTest() {
-        // for(auto it: cache){
-        //     cout<<"key: "<<it.first<<", fre: "<<it.second<<endl;
-        // }
-        Node* tmp = min;
-        while(tmp != nullptr) {
-            cout << "fre: " << tmp->fre << ", keys: ";
-            for(auto it : tmp->keys) {
+        for(auto it : sortedNode) {
+            cout << "fre: " << it.fre << ", keys: ";
+            for(auto it : it.keys) {
                 cout << it << ",";
             }
             cout << endl;
-            tmp = tmp->next;
         }
 
         printOutput("min:" + getMinKey());
@@ -127,25 +133,15 @@ public:
         cout << endl;
     }
     struct Node {
-        Node* pre;
-        Node* next;
         int fre;
-        unordered_multiset<string> keys;
-
-    public:
-        Node(const int f, const string& key)
-        : fre(f), pre(nullptr), next(nullptr) {
-            keys.insert(key);
-        }
+        unordered_set<string> keys;
     };
 
 private:
-    Node* min = nullptr;
-    Node* max = nullptr;
     // key:frequency
-    unordered_map<string, int> cache;
-    // frequency: key list
-    unordered_map<int, Node*> frequencies;
+    unordered_map<string, list<Node>::iterator> cache;
+    // double linked list
+    list<Node> sortedNode;
 
 
 public:
@@ -157,50 +153,21 @@ public:
             // not find
             // do nothing
         } else {
-            // find key
-            int fre = t->second;
-            auto it = frequencies[fre];
-            if(fre > 1) {
-                if(frequencies.find(fre - 1) != frequencies.end()) {
-                    // find next frequency
-                    frequencies[fre - 1]->keys.insert(key);
-
-                } else {
-                    Node* data = new Node(fre - 1, key);
-                    if(it == min) {
-                        // min
-                        it->pre = data;
-                        data->next = it;
-                        min = data;
-                    } else {
-                        Node* pre = it->pre;
-                        it->pre = data;
-                        data->next = it;
-                        pre->next = data;
-                        data->pre = pre;
-                    }
-                    frequencies[fre - 1] = data;
+            // cur: key's current position; target(pre position): target position after decreasing 1
+            auto cur = cache[key], target = prev(cur);
+            cache.erase(key);
+            if(cur->fre > 1) {
+                // insert the real node
+                if(cur == sortedNode.cbegin() || target->fre < cur->fre - 1) {
+                    target = sortedNode.insert(cur, { cur->fre - 1, {} });
                 }
-                cache[key] = fre - 1;
-            } else {
-                // fre <= 1
-                cache.erase(key);
+                target->keys.insert(key);
+                cache[key] = target;
             }
-            // remove key from old set
-            it->keys.erase(key);
-            if(it->keys.empty()) {
-                // remove it
-                if(it == min) {
-                    min = it->next;
-                } else if(it == max) {
-                    max = it->pre;
-                    max->next = nullptr;
-                } else {
-                    it->pre->next = it->next;
-                    it->next->pre = it->pre;
-                }
-                delete it;
-                frequencies.erase(fre);
+
+            cur->keys.erase(key);
+            if(cur->keys.empty()) {
+                sortedNode.erase(cur);
             }
         }
     }
@@ -208,76 +175,37 @@ public:
     void inc(string key) {
         auto t = cache.find(key);
         if(t == cache.end()) {
-            // not find
-            if(min != nullptr && min->fre == 1) {
-                min->keys.insert(key);
-            } else {
-                Node* data = new Node(1, key);
+            // insert a fake node
+            cache[key] = sortedNode.insert(sortedNode.cbegin(), { 0, { key } });
+        }
+        // cur: key's current position; target(next position): target position after increasing 1
+        auto cur = cache[key], target = next(cur);
+        // insert the real node
+        if(target == sortedNode.end() || target->fre > cur->fre + 1) {
+            // inserts value before pos.
+            target = sortedNode.insert(target, { cur->fre + 1, {} });
+        }
+        target->keys.insert(key);
+        cache[key] = target;
 
-                data->next = min;
-                if(min != nullptr) {
-                    min->pre = data;
-                    min = data;
-                } else {
-                    min = data;
-                    max = min;
-                }
-                frequencies[1] = data;
-            }
-            cache[key] = 1;
-        } else {
-            // find key
-            int fre = t->second;
-            auto it = frequencies[fre];
-            cache[key] = fre + 1;
-            if(frequencies.find(fre + 1) != frequencies.end()) {
-                // find next frequency
-                frequencies[fre + 1]->keys.insert(key);
-
-            } else {
-                Node* data = new Node(fre + 1, key);
-                if(it == max) {
-                    // maximum
-                    it->next = data;
-                    data->pre = it;
-                    max = data;
-                } else {
-                    Node* next = it->next;
-                    it->next = data;
-                    data->pre = it;
-                    next->pre = data;
-                    data->next = next;
-                }
-                frequencies[fre + 1] = data;
-            }
-            // remove key from old set
-            it->keys.erase(key);
-            if(it->keys.empty()) {
-                // remove it
-                if(it == min) {
-                    min = it->next;
-                } else {
-                    it->pre->next = it->next;
-                    it->next->pre = it->pre;
-                }
-                frequencies.erase(fre);
-                delete it;
-            }
+        cur->keys.erase(key);
+        if(cur->keys.empty()) {
+            sortedNode.erase(cur);
         }
     }
 
     string getMaxKey() {
-        if(max == nullptr || max->keys.empty()) {
+        if(sortedNode.empty()) {
             return "";
         }
-        return *max->keys.cbegin();
+        return *(sortedNode.crbegin()->keys.cbegin());
     }
 
     string getMinKey() {
-        if(min == nullptr || min->keys.empty()) {
+        if(sortedNode.empty()) {
             return "";
         }
-        return *min->keys.cbegin();
+        return *(sortedNode.cbegin()->keys.cbegin());
     }
 };
 

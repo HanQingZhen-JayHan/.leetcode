@@ -17,6 +17,7 @@
 #include "838.push-dominoes.cpp"
 #include "295.find-median-from-data-stream.cpp"
 #include "297.serialize-and-deserialize-binary-tree.cpp"
+#include "432.all-o-one-data-structure.cpp"
 
 int main(int, char**) {
 
@@ -25,6 +26,7 @@ int main(int, char**) {
     //  Twitter s;
     //LFUCache s(2);
     //MedianFinder s;
-    Codec s;
+    //Codec s;
+    AllOne s;
      s.test();
 }

@@ -20,16 +20,18 @@
 #include "79.word-search.cpp"
 #include "838.push-dominoes.cpp"
 #include "816.ambiguous-coordinates.cpp"
+#include "211.design-add-and-search-words-data-structure.cpp"
 
 int main(int, char**) {
 
     print("Hello, from LeetCode!");
-     Solution816 s;
+    // Solution816 s;
     //  Twitter s;
     // LFUCache s(2);
     // MedianFinder s;
     // Codec s;
     // AllOne s;
     //RandomizedCollection s;
-    s.test();
+    WordDictionary s;
+     s.test();
 }

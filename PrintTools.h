@@ -18,6 +18,10 @@ void print(const unordered_set<string>& us) {
 
     cout << "]" << endl;
 }
+void printBool(bool result) {
+    cout << std::boolalpha;
+    cout <<"result: "<< result << endl;
+}
 void print(const vector<string>& v) {
     cout << "[";
     int size = v.size();

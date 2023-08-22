@@ -9,6 +9,7 @@
 #include "139.word-break.cpp"
 #include "15.3-sum.cpp"
 #include "152.maximum-product-subarray.cpp"
+#include "211.design-add-and-search-words-data-structure.cpp"
 #include "295.find-median-from-data-stream.cpp"
 #include "297.serialize-and-deserialize-binary-tree.cpp"
 #include "355.design-twitter.cpp"
@@ -18,9 +19,11 @@
 #include "672.bulb-switcher-ii.cpp"
 #include "71.simplify-path.cpp"
 #include "79.word-search.cpp"
-#include "838.push-dominoes.cpp"
 #include "816.ambiguous-coordinates.cpp"
-#include "211.design-add-and-search-words-data-structure.cpp"
+#include "838.push-dominoes.cpp"
+#include "contest359_1.cpp"
+#include "contest359_2.cpp"
+#include "contest359_3.cpp"
 
 int main(int, char**) {
 
@@ -31,7 +34,10 @@ int main(int, char**) {
     // MedianFinder s;
     // Codec s;
     // AllOne s;
-    //RandomizedCollection s;
-    WordDictionary s;
-     s.test();
+    // RandomizedCollection s;
+    // WordDictionary s;
+    // Contest359_1 s;
+    // Contest359_2 s;
+    Contest359_3 s;
+    s.test();
 }

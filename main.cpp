@@ -7,6 +7,7 @@
 // #include "12.integer-to-roman.cpp"
 #include "126.word-ladder-ii.cpp"
 #include "139.word-break.cpp"
+#include "146.lru-cache.cpp"
 #include "15.3-sum.cpp"
 #include "152.maximum-product-subarray.cpp"
 #include "211.design-add-and-search-words-data-structure.cpp"
@@ -38,6 +39,7 @@ int main(int, char**) {
     // WordDictionary s;
     // Contest359_1 s;
     // Contest359_2 s;
-    Contest359_3 s;
+    // Contest359_3 s;
+    LRUCache s(2);
     s.test();
 }

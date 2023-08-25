@@ -26,18 +26,19 @@
 #include "contest359_2.cpp"
 #include "contest359_3.cpp"
 #include "208.implement-trie-prefix-tree.cpp"
+#include "62.unique-paths.cpp"
 
 int main(int, char**) {
 
     print("Hello, from LeetCode!");
-    // Solution816 s;
+     Solution62 s;
     //  Twitter s;
     // LFUCache s(2);
     // MedianFinder s;
     // Codec s;
     // AllOne s;
     // RandomizedCollection s;
-    WordDictionary s;
+    //WordDictionary s;
     // Contest359_1 s;
     // Contest359_2 s;
     // Contest359_3 s;

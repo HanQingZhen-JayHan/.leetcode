@@ -66,22 +66,29 @@
 // @lc code=start
 #include "BaseSolution.h"
 #include "PrintTools.h"
+#include <queue>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
+#include <utility>
+#include <vector>
 class WordDictionary : BaseSolution {
 public:
     void test() {
-        addWord("bad");
-        addWord("dad");
-        addWord("mad");
-        addWord("a");
-        printBool(search("pad"));
-        printBool(search("bad"));
-        printBool(search(".ad"));
-        printBool(search("b.."));
+        //"at"],["and"],["an"],["add"],["a"],[".at"],["bat"],[".at"],["an."],["a.d."],["b."],["a.d"],["."
+        addWord("at");
+        addWord("and");
+        addWord("an");
+        addWord("add");
         printBool(search("a"));
-        printBool(search(""));
+        printBool(search(".at"));
+        addWord("bat");
+        printBool(search(".at"));
+        printBool(search("an."));
+        printBool(search("a.d."));
+        printBool(search("b."));
+        printBool(search("a.d"));
+        printBool(search("."));
     }
 
     // private:
@@ -131,56 +138,52 @@ public:
     // }
     struct Node {
         bool isWord = false;
-        char c = ' ';
         Node* branches[26] = { nullptr };
-
-        void build(string& word, int index) {
-
-            if(index >= word.size()) {
-                isWord = word.size() > 0;
-                return;
-            }
-            int branchIndex = word[index] - 'a';
-            if(branches[branchIndex] == nullptr) {
-                branches[branchIndex] = new Node();
-                branches[branchIndex]->c = word[index];
-            }
-            branches[branchIndex]->build(word, index + 1);
-        }
-        bool search(string& word, int index) {
-
-            if(index == word.size()) {
-                return isWord;
-            }
-            if(word[index] == '.') {
-                for(int i = 0; i < 26; ++i) {
-                    if(branches[i] != nullptr && branches[i]->search(word, index + 1)) {
-                        return true;
-                    }
-                }
-            } else {
-                int branchIndex = word[index] - 'a';
-                Node* branch = branches[branchIndex];
-                if(branch != nullptr) {
-                    return branch->search(word, index + 1);
-                }
-            }
-            return false;
-        }
     };
 
 private:
     Node root;
+    Node* generateNode(Node& root, char c) {
+        int index = c - 'a';
+        if(root.branches[index] == nullptr) {
+            root.branches[index] = new Node();
+        }
+        return root.branches[index];
+    }
+    bool dfs(Node& root, string& word, int index) {
+        if(index >= word.size()) {
+            return root.isWord;
+        }
+        if(word[index] == '.') {
+            for(int i = 0; i < 26; ++i) {
+                if(root.branches[i] != nullptr && dfs(*root.branches[i], word, index + 1)) {
+                    return true;
+                }
+            }
+        } else {
+            if(root.branches[word[index] - 'a'] != nullptr &&
+            dfs(*root.branches[word[index] - 'a'], word, index + 1)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 public:
     WordDictionary() {}
 
     void addWord(string word) {
-        printInput(word);
-        root.build(word, 0);
+        if(word.empty()) {
+            return;
+        }
+        Node* ptr = generateNode(root, word[0]);
+        for(int i = 1; i < word.size(); ++i) {
+            ptr = generateNode(*ptr, word[i]);
+        }
+        ptr->isWord = true;
     }
 
-    bool search(string word) { return root.search(word, 0); }
+    bool search(string word) { return dfs(root, word, 0); }
 };
 
 /**

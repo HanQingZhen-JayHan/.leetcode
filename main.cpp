@@ -37,11 +37,11 @@ int main(int, char**) {
     // Codec s;
     // AllOne s;
     // RandomizedCollection s;
-    // WordDictionary s;
+    WordDictionary s;
     // Contest359_1 s;
     // Contest359_2 s;
     // Contest359_3 s;
     //LRUCache s(2);
-    Trie s;
+    //Trie s;
     s.test();
 }

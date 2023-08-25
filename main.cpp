@@ -25,6 +25,7 @@
 #include "contest359_1.cpp"
 #include "contest359_2.cpp"
 #include "contest359_3.cpp"
+#include "208.implement-trie-prefix-tree.cpp"
 
 int main(int, char**) {
 
@@ -40,6 +41,7 @@ int main(int, char**) {
     // Contest359_1 s;
     // Contest359_2 s;
     // Contest359_3 s;
-    LRUCache s(2);
+    //LRUCache s(2);
+    Trie s;
     s.test();
 }

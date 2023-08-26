@@ -27,11 +27,12 @@
 #include "contest359_3.cpp"
 #include "208.implement-trie-prefix-tree.cpp"
 #include "62.unique-paths.cpp"
+#include "91.decode-ways.cpp"
 
 int main(int, char**) {
 
     print("Hello, from LeetCode!");
-     Solution62 s;
+     Solution91 s;
     //  Twitter s;
     // LFUCache s(2);
     // MedianFinder s;

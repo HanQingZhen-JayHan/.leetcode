@@ -12,8 +12,8 @@
 class Contest360_3 : BaseSolution {
 public:
     void test() {
-        vector<int> data = { 1, 32, 1, 2 };
-        printOutput(minOperations(data, 12));
+        vector<int> data = { 2,4,7 };
+        printOutput(minOperations(data, 5));
     }
     int minOperations(vector<int>& nums, int target) {
         int res = 0;
@@ -30,6 +30,7 @@ public:
             q.pop();
             if(top <= target) {
                 target -= top;
+                //detect lower|upper bounder
             } else if(sum < target && top > target) {
                 sum += top;
                 q.push(top / 2);

@@ -76,8 +76,8 @@ public:
                         v.push_back(root);
                     }
                 }
-                dp[i] = v;
             }
+            dp[i] = v;
         }
         return dp[n];
     }

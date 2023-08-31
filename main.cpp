@@ -30,11 +30,12 @@
 #include "contest359_3.cpp"
 #include "contest360_3.cpp"
 #include "95.unique-binary-search-trees-ii.cpp"
+#include "120.triangle.cpp"
 
 int main(int, char**) {
 
     print("Hello, from LeetCode!");
-    Solution95 s;
+    Solution120 s;
     //  Twitter s;
     // LFUCache s(2);
     // MedianFinder s;

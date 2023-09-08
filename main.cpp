@@ -34,11 +34,14 @@
 #include "contest361_1.cpp"
 #include "contest361_2.cpp"
 #include "contest361_3.cpp"
+#include "279.perfect-squares.cpp"
+#include "300.longest-increasing-subsequence.cpp"
 
 int main(int, char**) {
 
     print("Hello, from LeetCode!");
-    Solution120 s;
+    Solution300 s;
+    s.test();
     //  Twitter s;
     // LFUCache s(2);
     // MedianFinder s;
@@ -51,7 +54,7 @@ int main(int, char**) {
     Contest361_3 s3;
     // LRUCache s(2);
     // Trie s;
-    s1.test();
-    s2.test();
-    s3.test();
+    // s1.test();
+    // s2.test();
+    // s3.test();
 }

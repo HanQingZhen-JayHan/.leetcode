@@ -31,6 +31,9 @@
 #include "contest360_3.cpp"
 #include "95.unique-binary-search-trees-ii.cpp"
 #include "120.triangle.cpp"
+#include "contest361_1.cpp"
+#include "contest361_2.cpp"
+#include "contest361_3.cpp"
 
 int main(int, char**) {
 
@@ -43,10 +46,12 @@ int main(int, char**) {
     // AllOne s;
     // RandomizedCollection s;
     // WordDictionary s;
-    // Contest359_1 s;
-    // Contest359_2 s;
-    // Contest359_3 s;
+    Contest361_1 s1;
+    Contest361_2 s2;
+    Contest361_3 s3;
     // LRUCache s(2);
     // Trie s;
-    s.test();
+    s1.test();
+    s2.test();
+    s3.test();
 }

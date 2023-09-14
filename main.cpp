@@ -36,11 +36,14 @@
 #include "contest361_3.cpp"
 #include "279.perfect-squares.cpp"
 #include "300.longest-increasing-subsequence.cpp"
+#include "309.best-time-to-buy-and-sell-stock-with-cooldown.cpp"
+#include "322.coin-change.cpp"
+#include "343.integer-break.cpp"
 
 int main(int, char**) {
 
     print("Hello, from LeetCode!");
-    Solution300 s;
+    Solution343 s;
     s.test();
     //  Twitter s;
     // LFUCache s(2);

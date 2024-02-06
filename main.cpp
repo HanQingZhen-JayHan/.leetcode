@@ -40,12 +40,13 @@
 #include "322.coin-change.cpp"
 #include "343.integer-break.cpp"
 #include "368.largest-divisible-subset.cpp"
+#include "contest363.cpp"
 
 int main(int, char**) {
 
     print("Hello, from LeetCode!");
     Solution368 s;
-    s.test();
+    //s.test();
     //  Twitter s;
     // LFUCache s(2);
     // MedianFinder s;
@@ -53,9 +54,8 @@ int main(int, char**) {
     // AllOne s;
     // RandomizedCollection s;
     // WordDictionary s;
-    Contest361_1 s1;
-    Contest361_2 s2;
-    Contest361_3 s3;
+    Contest363 contest;
+    contest.test();
     // LRUCache s(2);
     // Trie s;
     // s1.test();
